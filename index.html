@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#06070f">
+  <title>QUREO Solver - حل كيريو</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <div class="noise"></div>
+
+  <!-- نافذة التنبيه والانضمام لتيليجرام -->
+  <div id="join-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="join-title">
+    <div class="modal-card compact-card">
+      <div class="modal-kicker">خطوة واحدة سريعة</div>
+      <h2 id="join-title">تابع كل جديد</h2>
+      <p>تابع تحديثات الحل والكورسات الجديدة على تيليجرام، وبعدها كمل للمنصة.</p>
+      <a class="button button-primary full-width" href="https://t.me/mostafa0o0o0" target="_blank" rel="noopener">
+        <span>فتح تيليجرام</span> <span>↗</span>
+      </a>
+      <button id="joined-button" class="button button-secondary full-width" type="button">انضمت — متابعة</button>
+    </div>
+  </div>
+
+  <!-- الخطوة 0أ: اختيار نوع المدرسة -->
+  <div id="category-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="category-title">
+    <div class="modal-card category-panel">
+      <div class="modal-kicker">أهم خطوة — ظبطها صح</div>
+      <h2 id="category-title">حسابك على كيريو بالعربي ولا بالإنجليزي؟</h2>
+      <p class="modal-intro">دي أهم خطوة! لو حسابك بالعربي اختار «حكومي»، ولو بالإنجليزي اختار «لغات». الاختيار الغلط بيخلي الحل وقف من أوله.</p>
+      <div class="category-grid two-col">
+        <button class="category-option" id="category-government" type="button">
+          <span class="category-code">AR</span>
+          <span class="category-text"><strong>حكومي</strong><small>حساب كيريو بالعربي — أولى وتانية بكالوريا</small></span>
+          <span class="category-arrow">→</span>
+        </button>
+        <button class="category-option" id="category-language" type="button">
+          <span class="category-code">EN</span>
+          <span class="category-text"><strong>لغات</strong><small>حساب كيريو بالإنجليزي — جافاسكربت وبايثون وثقافة مالية</small></span>
+          <span class="category-arrow">→</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- الخطوة 0ب: اختيار السنة -->
+  <div id="year-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="year-title">
+    <div class="modal-card compact-card">
+      <div class="modal-kicker" id="year-kicker">مدارس لغات</div>
+      <h2 id="year-title">اختار سنتك</h2>
+      <p id="year-body">سنتك بتحدد الكورس وعدد الفصول الصحيح.</p>
+      <div class="year-buttons">
+        <button class="year-choice" id="year-one" type="button"><strong id="year-one-title">أولى بكالوريا</strong><small id="year-one-desc">JavaScript · 42 فصل</small></button>
+        <button class="year-choice" id="year-two" type="button"><strong id="year-two-title">تانية بكالوريا</strong><small id="year-two-desc">JavaScript وPython وFinancial Literacy</small></button>
+      </div>
+      <button id="year-back" class="button button-ghost full-width" type="button">رجوع لنوع المدرسة</button>
+    </div>
+  </div>
+
+  <!-- نافذة الخطأ (اختيار خاطئ) -->
+  <div id="mismatch-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="mismatch-title">
+    <div class="modal-card compact-card mismatch-card">
+      <div class="mismatch-icon">!</div>
+      <div class="modal-kicker">اختيار غير صحيح</div>
+      <h2 id="mismatch-title">انت اخترت لغات أو حكومي بالغلط 😅</h2>
+      <p>الحساب ده مش مشترك في الكورس اللي اخترته، عشان كده الحل وقف. راجع نوع مدرستك: حساب كيريو بالعربي = حكومي، بالإنجليزي = لغات. اختار مرة تانية وابدأ من جديد.</p>
+      <button id="mismatch-retry" class="button button-primary full-width" type="button">اختار مرة تانية</button>
+      <button id="mismatch-close" class="button button-ghost full-width" type="button">إغلاق</button>
+    </div>
+  </div>
+
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="https://beta.qureosolver.xyz/" aria-label="QUREO Solver home">
+        <span class="brand-symbol">Q</span>
+        <span><strong>حل كيريو</strong><small>QUREO</small></span>
+      </a>
+      <a class="
